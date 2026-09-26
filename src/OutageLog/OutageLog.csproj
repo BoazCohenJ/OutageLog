@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- .NET Framework 4.8 ships with every Windows 10 and 11 install, so the .exe runs with nothing to install. -->
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <RootNamespace>OutageLog</RootNamespace>
+    <AssemblyName>OutageLog</AssemblyName>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Version>1.0.0</Version>
+    <Product>OutageLog</Product>
+    <Description>Logs internet outages and makes a report that shows whose side they were on.</Description>
+    <Copyright>Copyright (c) 2026 BoazCohenJ</Copyright>
+    <Company>OutageLog</Company>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="app.ico" LogicalName="OutageLog.app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="OutageLog.Tests" />
+  </ItemGroup>
+
+</Project>
