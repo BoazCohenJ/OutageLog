@@ -27,7 +27,8 @@ jobs:
           New-Item -ItemType Directory dist | Out-Null
           Copy-Item src/OutageLog/bin/Release/net48/OutageLog.exe dist/
           $hash = (Get-FileHash dist/OutageLog.exe -Algorithm SHA256).Hash.ToLower()
-          "$hash  OutageLog.exe" | Out-File -Encoding ascii dist/OutageLog.exe.sha256
+          # LF line ending so `sha256sum -c` works on Linux, macOS and Git Bash.
+          [IO.File]::WriteAllText("$PWD/dist/OutageLog.exe.sha256", "$hash  OutageLog.exe`n")
           Get-Content dist/OutageLog.exe.sha256
 
       - uses: actions/upload-artifact@v7
