@@ -42,5 +42,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: pwsh
         run: |
-          gh release create "${{ github.ref_name }}" dist/OutageLog.exe dist/OutageLog.exe.sha256 `
-            --title "OutageLog ${{ github.ref_name }}" --notes-file .github/release-notes.md
+          $tag = "${{ github.ref_name }}"
+          $title = "OutageLog $tag"
+          $notes = ".github/release-notes.md"
+
+          if (gh release view $tag *> $null) {
+            gh release upload $tag dist/OutageLog.exe dist/OutageLog.exe.sha256 --clobber
+            gh release edit $tag --title $title --notes-file $notes
+          } else {
+            gh release create $tag dist/OutageLog.exe dist/OutageLog.exe.sha256 `
+              --title $title --notes-file $notes
+          }
