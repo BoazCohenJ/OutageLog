@@ -74,6 +74,9 @@ OutageLog pings the gateway of the network adapter Windows uses to reach the int
 **Where are the logs, and how big do they get?**
 `%LOCALAPPDATA%\OutageLog\data`, one CSV file per day, about 2 MB for a day of checks. Files older than 60 days are deleted (`keepDays` in `settings.ini`; 0 keeps everything).
 
+**Is there a Linux version?**
+There's an unofficial Linux port by [@LucasAmf32](https://github.com/LucasAmf32): [outagelog-linux](https://github.com/LucasAmf32/outagelog-linux), a Python systemd service with a tray icon. It uses the same CSV log format, so you can copy logs between Windows and Linux and make a report on either. It adds an optional `internal_ms` column for internal devices, which the Windows report ignores. It's maintained separately and isn't tested or supported here.
+
 **Can a CSV file be edited?**
 Yes. This is your own record, not a certified measurement. The report shows how everything was measured so anyone can judge it.
 
