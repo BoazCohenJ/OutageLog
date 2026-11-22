@@ -1,0 +1,71 @@
+name: Bug report
+description: "OutageLog logged something wrong, missed an outage, or misbehaves"
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time. Even a short report helps, and nothing here is too small.
+  - type: textarea
+    id: what
+    attributes:
+      label: "What happened?"
+      description: "What did you do, what did you expect, and what happened instead?"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      placeholder: |
+        1. Unplug the router for a minute
+        2. Open the status window
+        3. ...
+  - type: input
+    id: version
+    attributes:
+      label: "OutageLog version"
+      description: "The release you downloaded"
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: "Windows version"
+      description: "Press Win+R, type `winver`"
+      placeholder: "Windows 11 24H2 (build 26100)"
+  - type: dropdown
+    id: connection
+    attributes:
+      label: "How this PC connects"
+      options:
+        - "Ethernet"
+        - "Wi-Fi"
+        - "Mobile hotspot"
+        - "Other"
+  - type: dropdown
+    id: vpn
+    attributes:
+      label: "VPN running?"
+      options:
+        - "No"
+        - "Yes, full tunnel"
+        - "Yes, split tunnel"
+        - "Not sure"
+  - type: textarea
+    id: self-test-output
+    attributes:
+      label: "Self-test output"
+      description: "`.\\OutageLog.exe --self-test 20 | Out-Host`"
+      render: text
+  - type: textarea
+    id: log-excerpt
+    attributes:
+      label: "Log excerpt"
+      description: "The matching lines from the day's CSV in `%LOCALAPPDATA%\\OutageLog\\data`"
+      render: text
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Anything else"
+      description: "A screenshot of the report or status window helps. Changed `settings.ini` values too."
